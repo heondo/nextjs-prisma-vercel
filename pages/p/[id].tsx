@@ -34,6 +34,7 @@ const Post: React.FC<PostProps> = (props) => {
     <Layout>
       <div>
         <h2>{title}</h2>
+        <div>testing husky</div>
         <p>By {props?.author?.name || 'Unknown author'}</p>
         <ReactMarkdown source={props.content} />
       </div>
