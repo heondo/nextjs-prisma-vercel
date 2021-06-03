@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "tslint": "tslint -p . -c tsconfig.json"
+    "start": "next start",    
+    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "type-check": "tsc --pretty --noEmit",
+    "lint": "eslint . --ext ts --ext tsx --ext js"
   },
   "keywords": [],
   "author": "",
