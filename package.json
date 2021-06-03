@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "tslint": "tslint -p . -c tsconfig.json"
-
   },
   "keywords": [],
   "author": "",
@@ -25,6 +24,7 @@
     "@types/react": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -43,14 +43,16 @@
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^4.3.2"
   },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint '*/**/*.{js,jsx,ts,tsx}' --fix"
-    ]
   }
 }
