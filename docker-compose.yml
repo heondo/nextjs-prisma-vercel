@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  nxp-postgres:
+    container_name: nxp-postgres
+    image: postgres:latest
+    env_file:
+      - .env
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - ./container-data/postgres:/data/postgres
+    networks:
+      - nextjs
+
+  nxp-pgadmin:
+    links:
+      - nxp-postgres:nxp-postgres
+    container_name: nxp-pgadmin
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    ports:
+      - ${PGADMIN_PORT}:80
+    volumes:
+      - ./container-data/pgadmin:/root/.pgadmin
+    networks:
+      - nextjs
+
+networks:
+  nextjs:
+    driver: bridge
