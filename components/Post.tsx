@@ -5,10 +5,12 @@ import ReactMarkdown from 'react-markdown'
 export type PostProps = {
   id: number
   title: string
-  author: {
-    name: string
-    email: string
-  } | null
+  author:
+    | {
+        name: string
+        email: string
+      }
+    | undefined
   content: string
   published: boolean
 }
